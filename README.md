@@ -1,74 +1,72 @@
-# Voice Separation Tool
+# Voice Separation Web App
 
-This project separates an audio file into:
+This project lets you separate audio files into:
+- Vocals
+- Instrumental / Karaoke
 
-- vocals
-- karaoke (instrumental)
+Accessible through a web interface.
 
-You can choose between **Demucs** and **Spleeter**.
+## Installation Steps
 
----
+1. Copy all files to their correct locations.
+2. Keep your existing .env file (update values as needed).
+3. Install dependencies:
+   pip3 install -r requirements.txt
+4. Run the web app:
+   python3 web_app.py
 
-## 📦 Installation
+The app should now be accessible via http://localhost:5000 (or the port you configure).
 
-### 1. Install dependencies
+## Folder & File Structure
 
-``` pip install -r requirements.txt ```
+Root:
+- web_app.py – main Flask application
+- config.py – loads environment variables
+- .env – configuration file for secrets and SMTP
+- requirements.txt – all dependencies
 
+Source:
+- separate.py – audio separation functions
 
-Or run: bash install.sh
+Templates:
+- index.html – main input page with progress bar
+- result.html – download page for separated audio
+- login.html – login page
+- register.html – registration page
+- forgot_password.html – password recovery page
+- reset_password.html – password reset page
 
+Example .env values (.env.example):
+# Email configuration
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+SMTP_EMAIL=your-email@gmail.com
+SMTP_PASSWORD=your-app-password-here
 
----
+# App configuration
+SECRET_KEY=your-secret-key-here
+DEBUG=False
 
-## 📁 Folder Structure
-- ``` input/ place your .mp3 file here ```
-- ``` output/vocals/ extracted vocals ```
-- ``` output/karaoke/ instrumental ```
-- ``` src/separate.py main program ``` 
+## Usage
 
+1. Open the web app in your browser.
+2. Upload a song through the web interface.
+3. Wait for the separation process to complete.
+4. Download your separated files:
+   - output/vocals/
+   - output/karaoke/
 
----
+Temporary files are automatically removed after each run.
 
-## ▶️ Usage
+## Compatibility
 
-1. Put your song inside the **input** folder.  
-2. Run: python src/separate.py or python3 src/separate.py accordingly
-3. enter the song name when prompted
-4. enter the method to use when prompted Options: "spleeter" or "demucs" Works better with demucs
-
-
-
-Your results appear in:
-
-- `output/vocals/`
-- `output/karaoke/`
-
----
-
-## 🧹 Auto-cleaning
-
-Temporary files are removed after each run.
-
----
-
-## 🛠 Compatible With
-
-- macOS - verified
-- Windows - not verified 
-- Linux - not verified 
-
----
+- macOS – verified
+- Windows / Linux – not verified
 
 ## License
 
-MIT
+MIT License
 
-Copyright (c) 2025 <Aswath Murthy>
+Copyright (c) 2025 Aswath Murthy
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, **provided that the original author <Aswath Murthy> is credited**.
-...
+You can use, copy, modify, and distribute the software as long as the original author is credited.

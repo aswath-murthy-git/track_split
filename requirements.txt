@@ -13,4 +13,7 @@ pydub>=0.25.1
 Flask>=2.3.0
 Werkzeug>=2.3.0
 gunicorn>=21.0.0
+torchcodec
+
+# Environment Variables
 python-dotenv>=1.0.0
