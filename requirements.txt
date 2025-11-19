@@ -1,0 +1,16 @@
+# Audio Separation
+demucs>=4.0.0
+torch>=2.0.0
+torchaudio>=2.0.0
+
+# Audio Processing
+soundfile>=0.12.1
+numpy>=1.23.0
+ffmpeg-python>=0.2.0
+pydub>=0.25.1
+
+# Web Application
+Flask>=2.3.0
+Werkzeug>=2.3.0
+gunicorn>=21.0.0
+python-dotenv>=1.0.0

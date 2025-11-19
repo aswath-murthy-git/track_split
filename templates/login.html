@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - AI Media Suite</title>
+    <style>
+        :root {
+            --noir-primary: #1E1E1E;
+            --noir-secondary: #595959;
+            --noir-tertiary: #A6A6A6;
+            --noir-light: #D0D0D0;
+            --noir-accent: #F1EFEF;
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 40px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--noir-primary);
+            color: var(--noir-accent);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-md);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: var(--spacing-lg);
+            color: var(--noir-accent);
+        }
+
+        .card {
+            background: rgba(89, 89, 89, 0.1);
+            border: 1px solid var(--noir-secondary);
+            border-radius: 16px;
+            padding: var(--spacing-lg);
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .subtitle {
+            color: var(--noir-tertiary);
+            margin-bottom: var(--spacing-lg);
+            font-size: 15px;
+        }
+
+        .alert {
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            margin-bottom: var(--spacing-md);
+            font-size: 14px;
+        }
+
+        .alert-error {
+            background: rgba(239, 83, 80, 0.1);
+            border: 1px solid rgba(239, 83, 80, 0.3);
+            color: #EF5350;
+        }
+
+        .alert-success {
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: #4CAF50;
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            color: var(--noir-light);
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: var(--spacing-md);
+            background: var(--noir-secondary);
+            border: 1px solid var(--noir-tertiary);
+            border-radius: 8px;
+            color: var(--noir-accent);
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--noir-light);
+            background: #6B6B6B;
+        }
+
+        button {
+            width: 100%;
+            padding: var(--spacing-md);
+            background: var(--noir-accent);
+            color: var(--noir-primary);
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+            margin-top: var(--spacing-sm);
+        }
+
+        button:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(241, 239, 239, 0.2);
+        }
+
+        .divider {
+            text-align: center;
+            margin: var(--spacing-lg) 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--noir-secondary);
+        }
+
+        .divider span {
+            background: rgba(89, 89, 89, 0.1);
+            padding: 0 var(--spacing-sm);
+            position: relative;
+            color: var(--noir-tertiary);
+            font-size: 13px;
+        }
+
+        .guest-btn {
+            display: block;
+            width: 100%;
+            padding: var(--spacing-md);
+            background: transparent;
+            color: var(--noir-light);
+            border: 1px solid var(--noir-secondary);
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .guest-btn:hover {
+            background: var(--noir-secondary);
+            color: var(--noir-accent);
+            border-color: var(--noir-tertiary);
+        }
+
+        .guest-note {
+            display: block;
+            font-size: 12px;
+            opacity: 0.7;
+            margin-top: var(--spacing-xs);
+        }
+
+        .link-text {
+            text-align: center;
+            margin-top: var(--spacing-lg);
+            color: var(--noir-tertiary);
+            font-size: 14px;
+        }
+
+        .link-text a {
+            color: var(--noir-accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .link-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">Track Split</div>
+        
+        <div class="card">
+            <h1>Welcome Back</h1>
+            <p class="subtitle">Sign in to access your account</p>
+
+            {% if error %}
+            <div class="alert alert-error">{{ error }}</div>
+            {% endif %}
+
+            {% if success %}
+            <div class="alert alert-success">{{ success }}</div>
+            {% endif %}
+
+            <form method="POST" action="/login">
+                <div class="form-group">
+                    <label for="username">Username or Email</label>
+                    <input type="text" id="username" name="username" required autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div style="text-align: right; margin-bottom: var(--spacing-md);">
+                    <a href="/forgot-password" style="color: var(--noir-tertiary); text-decoration: none; font-size: 13px;">Forgot password?</a>
+                </div>
+
+                <button type="submit">SIGN IN</button>
+            </form>
+
+            <div class="divider"><span>OR</span></div>
+
+            <a href="/guest-login" class="guest-btn">
+                CONTINUE AS GUEST
+                <span class="guest-note">Limited quality • No registration required</span>
+            </a>
+
+            <div class="link-text">
+                Don't have an account? <a href="/register">Create one</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
