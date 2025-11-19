@@ -37,13 +37,19 @@ Templates:
 - reset_password.html – password reset page
 
 Example .env values (.env.example):
+
 # Email configuration
+
 SMTP_SERVER=smtp.gmail.com
+
 SMTP_PORT=587
+
 SMTP_EMAIL=your-email@gmail.com
+
 SMTP_PASSWORD=your-app-password-here
 
 # App configuration
+
 SECRET_KEY=your-secret-key-here
 
 DEBUG=False
