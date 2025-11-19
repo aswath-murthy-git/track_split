@@ -1,4 +1,4 @@
-# Voice Separation Web App
+# Track Split Web App
 
 This project lets you separate audio files into:
 - Vocals
