@@ -45,6 +45,7 @@ SMTP_PASSWORD=your-app-password-here
 
 # App configuration
 SECRET_KEY=your-secret-key-here
+
 DEBUG=False
 
 ## Usage
