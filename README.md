@@ -1,10 +1,10 @@
 # Track Splitter
 
-Simple terminal-based audio separation tool that splits songs into vocals and instrumentals using AI.
+Simple terminal-based audio separation tool that splits songs into vocals and instrumentals (karaoke) using AI.
 
 ## Features
 
-- 🎵 Separates vocals from instrumentals
+- 🎵 Separates vocals from instrumentals (karaoke)
 - 🖥️ Simple terminal interface
 - 🎯 Single-purpose, focused tool
 - 🚀 Fast and efficient
@@ -66,7 +66,7 @@ Processing takes 1-3 minutes per song.
 
 Find separated files in:
 - `output/vocals/` - Vocal tracks
-- `output/instrumentals/` - Instrumental tracks
+- `output/karaoke/` - karaoke tracks
 
 ## Example
 
@@ -84,8 +84,8 @@ $ python track_split.py
 
 Available audio files:
 
-  1. my_song.mp3 (8.5 MB)
-  2. another_track.wav (45.2 MB)
+  1. my_song_1.mp3 (8.5 MB)
+  2. my_song_2.wav (45.2 MB)
 
   0. Exit
 
@@ -97,8 +97,8 @@ Processing: my_song.mp3
 
 [Progress bar appears here]
 
-✓ Vocals saved: my_song_vocals_20251118_143022.wav
-✓ Instrumental saved: my_song_instrumental_20251118_143022.wav
+✓ Vocals saved: my_song_vocals_timestamp.wav
+✓ Instrumental (karaoke) saved: my_song_karaoke_timestamp.wav
 
 ✓ Separation complete!
 ℹ Output files saved in 'output' folder
@@ -117,7 +117,7 @@ track_split/
 ├── input/                 # Place audio files here
 └── output/
     ├── vocals/           # Separated vocals
-    └── instrumentals/    # Separated instrumentals
+    └── karaoke/          # Separated instrumentals
 ```
 
 ## Output Format
