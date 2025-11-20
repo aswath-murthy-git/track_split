@@ -33,18 +33,23 @@ env/
 ENV/
 *.venv
 
-# User data (don't upload to GitHub)
-users.json
-pending_users.json
-
-# Audio files
+# Ignore all audio files inside input folder
 input/*.mp3
 input/*.wav
 input/*.flac
 input/*.ogg
 input/*.m4a
-output/
-temp/
+
+# Allow the input folder itself to exist
+!input/.gitkeep
+
+# Ignore all files in output folder
+output/*
+# Allow output subfolders to exist
+!output/.gitkeep
+!output/vocals/
+!output/karaoke/
+
 
 # IDE
 .vscode/
