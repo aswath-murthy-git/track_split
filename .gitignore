@@ -45,6 +45,7 @@ input/*.m4a
 
 # Ignore all files in output folder
 output/*
+
 # Allow output subfolders to exist
 !output/.gitkeep
 !output/vocals/
