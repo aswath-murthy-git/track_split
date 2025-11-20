@@ -1,72 +1,166 @@
-# Track Split Web App
+# Track Splitter
 
-This project lets you separate audio files into:
-- Vocals
-- Instrumental / Karaoke
+Simple terminal-based audio separation tool that splits songs into vocals and instrumentals using AI.
 
-Accessible through a web interface.
+## Features
 
-## Installation Steps
+- 🎵 Separates vocals from instrumentals
+- 🖥️ Simple terminal interface
+- 🎯 Single-purpose, focused tool
+- 🚀 Fast and efficient
+- 📁 Organized output
 
-1. Copy all files to their correct locations.
-2. Keep your existing .env file (update values as needed).
-3. Install dependencies:
-   pip3 install -r requirements.txt
-4. Run the web app:
-   python3 web_app.py
+## Installation
 
-The app should now be accessible via http://localhost:5000 (or the port you configure).
+### 1. Install Python 3.8+
 
-## Folder & File Structure
+Make sure you have Python 3.8 or higher installed.
 
-Root:
-- web_app.py – main Flask application
-- config.py – loads environment variables
-- .env – configuration file for secrets and SMTP
-- requirements.txt – all dependencies
+### 2. Install Dependencies
 
-Source:
-- separate.py – audio separation functions
+```bash
+pip install -r requirements.txt
+```
 
-Templates:
-- index.html – main input page with progress bar
-- result.html – download page for separated audio
-- login.html – login page
-- register.html – registration page
-- forgot_password.html – password recovery page
-- reset_password.html – password reset page
+Or install manually:
+```bash
+pip install demucs torch torchaudio
+```
 
-Example .env values (.env.example):
-# Email configuration
-SMTP_SERVER=smtp.gmail.com
-SMTP_PORT=587
-SMTP_EMAIL=your-email@gmail.com
-SMTP_PASSWORD=your-app-password-here
+### 3. Install ffmpeg (Required)
 
-# App configuration
-SECRET_KEY=your-secret-key-here
-DEBUG=False
+**macOS:**
+```bash
+brew install ffmpeg
+```
+
+**Linux:**
+```bash
+sudo apt-get install ffmpeg
+```
+
+**Windows:**
+Download from https://ffmpeg.org/download.html
 
 ## Usage
 
-1. Open the web app in your browser.
-2. Upload a song through the web interface.
-3. Wait for the separation process to complete.
-4. Download your separated files:
-   - output/vocals/
-   - output/karaoke/
+### 1. Place audio files
 
-Temporary files are automatically removed after each run.
+Put your audio files (MP3, WAV, FLAC, OGG, M4A) in the `input` folder.
 
-## Compatibility
+### 2. Run the program
 
-- macOS – verified
-- Windows / Linux – not verified
+```bash
+python track_split.py
+```
+
+### 3. Select file
+
+Choose a file from the numbered list.
+
+### 4. Wait
+
+Processing takes 1-3 minutes per song.
+
+### 5. Get results
+
+Find separated files in:
+- `output/vocals/` - Vocal tracks
+- `output/instrumentals/` - Instrumental tracks
+
+## Example
+
+```
+$ python track_split.py
+
+╔════════════════════════════════════════╗
+║         TRACK SPLITTER v1.0            ║
+║    AI-Powered Audio Separation         ║
+╚════════════════════════════════════════╝
+
+ℹ Checking dependencies...
+✓ All dependencies installed
+✓ Directories ready
+
+Available audio files:
+
+  1. my_song.mp3 (8.5 MB)
+  2. another_track.wav (45.2 MB)
+
+  0. Exit
+
+Select file (1-2) or 0 to exit: 1
+
+Processing: my_song.mp3
+
+ℹ This may take 1-3 minutes depending on file length...
+
+[Progress bar appears here]
+
+✓ Vocals saved: my_song_vocals_20251118_143022.wav
+✓ Instrumental saved: my_song_instrumental_20251118_143022.wav
+
+✓ Separation complete!
+ℹ Output files saved in 'output' folder
+
+Process another file? (y/n): n
+ℹ Goodbye!
+```
+
+## Folder Structure
+
+```
+track_split/
+├── track_split.py          # Main program
+├── requirements.txt        # Dependencies
+├── README.md              # This file
+├── input/                 # Place audio files here
+└── output/
+    ├── vocals/           # Separated vocals
+    └── instrumentals/    # Separated instrumentals
+```
+
+## Output Format
+
+- **Format:** WAV (uncompressed)
+- **Sample Rate:** 44.1 kHz
+- **Bit Depth:** 16-bit
+- **Channels:** Stereo
+
+## Troubleshooting
+
+### "No module named 'demucs'"
+```bash
+pip install demucs
+```
+
+### "ffmpeg not found"
+Install ffmpeg (see Installation section)
+
+### "Out of memory"
+Try processing shorter files or close other applications
+
+### Slow processing
+Normal on CPU. Processing takes 1-3 minutes per 3-minute song.
+
+## Technical Details
+
+- **AI Model:** Demucs (Facebook Research)
+- **Algorithm:** Hybrid Transformer model
+- **Quality:** Professional-grade separation
+- **Speed:** ~1-2 minutes per song (CPU)
 
 ## License
 
 MIT License
 
-Copyright (c) 2025 Aswath Murthy
+## Credits
 
-You can use, copy, modify, and distribute the software as long as the original author is credited.
+- Audio separation: Demucs by Facebook Research
+- Created for simple, focused audio processing
+
+## Support
+
+For issues or questions, check:
+- Demucs documentation: https://github.com/facebookresearch/demucs
+- ffmpeg documentation: https://ffmpeg.org/documentation.html

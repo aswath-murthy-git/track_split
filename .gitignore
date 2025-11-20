@@ -31,13 +31,13 @@ wheels/
 venv/
 env/
 ENV/
-.venv
+*.venv
 
 # User data (don't upload to GitHub)
 users.json
 pending_users.json
 
-# Audio files (too large for GitHub)
+# Audio files
 input/*.mp3
 input/*.wav
 input/*.flac
