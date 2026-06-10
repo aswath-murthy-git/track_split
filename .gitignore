@@ -44,12 +44,14 @@ input/*.m4a
 !input/.gitkeep
 
 # Ignore all files in output folder
-output/*
+output/**
 
 # Allow output subfolders to exist
 !output/.gitkeep
 !output/vocals/
 !output/karaoke/
+!output/vocals/.gitkeep
+!output/karaoke/.gitkeep
 
 
 # IDE
